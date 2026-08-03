@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://hp1fxvhkowu"]
+
+[ext_resource type="Script" uid="uid://do1vaulwhk637" path="res://scripts/box.gd" id="1_oq5cr"]
+[ext_resource type="Texture2D" uid="uid://ngm2qouh0tgh" path="res://assets/placeholder_box.png" id="2_bqn3j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i1hh"]
+size = Vector2(32, 32)
+
+[node name="Box" type="AnimatableBody2D" unique_id=427020993]
+script = ExtResource("1_oq5cr")
+tile_size = null
+push_delay = null
+move_time = null
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=796822109]
+texture = ExtResource("2_bqn3j")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=861499583]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_0i1hh")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1634241463]
+position = Vector2(16, 16)
+target_position = Vector2(0, 32)
