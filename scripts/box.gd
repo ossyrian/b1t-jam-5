@@ -26,12 +26,13 @@ func _update_collision_ray(vec: Vector2):
 
 
 func _can_move() -> bool:
-	var collider = ray2d.get_collider()
-	if not collider:
-		return true
-	print("collision: ", collider)
+	return not ray2d.is_colliding()
+	# var collider = ray2d.get_collider()
+	# if not collider:
+	# 	return true
+	# print("collision: ", collider)
 
-	return collider is not Box
+	# return collider is not Box
 
 
 func _move(vec: Vector2):
