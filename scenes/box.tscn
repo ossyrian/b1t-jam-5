@@ -1,25 +1,29 @@
 [gd_scene format=3 uid="uid://hp1fxvhkowu"]
 
-[ext_resource type="Script" uid="uid://do1vaulwhk637" path="res://scripts/box.gd" id="1_oq5cr"]
+[ext_resource type="Script" uid="uid://d1lvtr4v3bgkq" path="res://scripts/pushable_object.gd" id="1_c2ln5"]
 [ext_resource type="Texture2D" uid="uid://ngm2qouh0tgh" path="res://assets/placeholder_box.png" id="2_bqn3j"]
+[ext_resource type="PackedScene" uid="uid://buf8ve5ir88se" path="res://scenes/grid_detection.tscn" id="2_telwu"]
+[ext_resource type="PackedScene" uid="uid://be0sau782p10q" path="res://scenes/grid_movement.tscn" id="4_brpd5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i1hh"]
 size = Vector2(32, 32)
 
 [node name="Box" type="AnimatableBody2D" unique_id=427020993]
-script = ExtResource("1_oq5cr")
-tile_size = null
-push_delay = null
-move_time = null
+sync_to_physics = false
+script = ExtResource("1_c2ln5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=861499583]
+position = Vector2(16, 16)
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_0i1hh")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=796822109]
 texture = ExtResource("2_bqn3j")
 centered = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=861499583]
+[node name="GridDetection" parent="." unique_id=1771840494 instance=ExtResource("2_telwu")]
 position = Vector2(16, 16)
-shape = SubResource("RectangleShape2D_0i1hh")
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1634241463]
-position = Vector2(16, 16)
-target_position = Vector2(0, 32)
+[node name="GridMovement" parent="." unique_id=1174022515 node_paths=PackedStringArray("body", "current_direction") instance=ExtResource("4_brpd5")]
+body = NodePath("..")
+current_direction = NodePath("../GridDetection")

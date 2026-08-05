@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dt5jm6ps0ddhm" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bas884qjga6ps" path="res://assets/placeholder_player.png" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://buf8ve5ir88se" path="res://scenes/grid_detection.tscn" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xy6x"]
 size = Vector2(32, 32)
@@ -19,6 +20,5 @@ texture = ExtResource("2_qhqgy")
 centered = false
 region_rect = Rect2(0, 0, 32, 32)
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=349671866]
+[node name="GridDetection" parent="." unique_id=1771840494 instance=ExtResource("3_qhqgy")]
 position = Vector2(16, 16)
-target_position = Vector2(0, 36)

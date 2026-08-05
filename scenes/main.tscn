@@ -44,16 +44,16 @@ rendering_quadrant_size = 32
 physics_quadrant_size = 32
 
 [node name="Player" parent="." unique_id=200449314 instance=ExtResource("3_tbgi4")]
-position = Vector2(269, 83)
+position = Vector2(288, 96)
 
 [node name="Box2" parent="." unique_id=820744367 instance=ExtResource("2_jyhfs")]
-position = Vector2(150, 85)
+position = Vector2(128, 96)
 tile_size = 32
 push_delay = 0.1
 move_time = 0.15
 
 [node name="Box" parent="." unique_id=1569734355 instance=ExtResource("2_jyhfs")]
-position = Vector2(212, 85)
+position = Vector2(224, 64)
 tile_size = 32
 push_delay = 0.1
 move_time = 0.15

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://buf8ve5ir88se"]
+
+[ext_resource type="Script" uid="uid://bjwb5tnj5lgrj" path="res://scripts/grid_detection.gd" id="1_jc5tb"]
+
+[node name="GridDetection" type="RayCast2D" unique_id=1771840494]
+target_position = Vector2(0, 32)
+script = ExtResource("1_jc5tb")
