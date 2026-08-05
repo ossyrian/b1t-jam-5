@@ -7,20 +7,19 @@ var moving := false
 
 
 func _move():
-	if moving:
-		return false
-
 	moving = true
 
 	var tween = create_tween()
 	tween.tween_property(body, "position", body.position + current_direction.target_position, 0.15)
-
+	await tween.finished
 	moving = false
-	return true
 
 
 func try_move():
+	if moving:
+		return false
 	if current_direction.is_colliding():
-		return
+		return false
 
-	return _move()
+	_move()
+	return true

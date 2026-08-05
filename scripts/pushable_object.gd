@@ -12,4 +12,6 @@ func handle_player_collision(direction: Vector2):
 	if grid_detection.is_colliding():
 		return
 
-	grid_movement.try_move()
+	if grid_movement.try_move():
+		$PushSound.pitch_scale = randf_range(0.95, 1.05)
+		$PushSound.play()

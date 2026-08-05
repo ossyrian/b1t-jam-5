@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://57dsbv7nuhhv" path="res://assets/tiles.png" id="1_ro66u"]
 [ext_resource type="PackedScene" uid="uid://7to0ayjec8af" path="res://scenes/player.tscn" id="2_ms78c"]
 [ext_resource type="PackedScene" uid="uid://hp1fxvhkowu" path="res://scenes/box.tscn" id="3_d58p2"]
+[ext_resource type="AudioStream" uid="uid://butm0ppst8e7j" path="res://assets/time_for_adventure.mp3" id="4_ms78c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdubu"]
 texture = ExtResource("1_ro66u")
@@ -53,3 +54,8 @@ position = Vector2(64, 128)
 
 [node name="Box" parent="." unique_id=1569734355 instance=ExtResource("3_d58p2")]
 position = Vector2(224, 160)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1467679417]
+stream = ExtResource("4_ms78c")
+pitch_scale = 0.5
+autoplay = true
