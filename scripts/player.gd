@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var is_frozen = false
 @export var push_delay = 0.2
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 var collision_direction = Vector2.ZERO
 
 
@@ -25,6 +27,14 @@ func _move():
 		return
 
 	var input_direction = Input.get_vector("left", "right", "up", "down")
+
+	if input_direction == Vector2.ZERO:
+		sprite.play("idle")
+	else:
+		sprite.play("walk")
+	if input_direction.x != 0:
+		sprite.flip_h = input_direction.x < 0
+
 	velocity = input_direction * speed
 
 	$GridDetection.point_at(velocity)
