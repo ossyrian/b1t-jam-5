@@ -6,13 +6,6 @@ extends Node2D
 var moving := false
 
 
-func _to_cardinal_direction(vec: Vector2) -> Vector2:
-	if abs(vec.x) > abs(vec.y):
-		return Vector2(sign(vec.x), 0)
-
-	return Vector2(0, sign(vec.y))
-
-
 func _move():
 	if moving:
 		return false

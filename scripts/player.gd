@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed = 400
 @export var push_collision_radius = 16
 @export var is_frozen = false
+@export var push_delay = 0.2
 
 var collision_direction = Vector2.ZERO
 
@@ -15,7 +16,7 @@ func _handle_collision(collision: KinematicCollision2D):
 	if collider.has_method("handle_player_collision"):
 		is_frozen = true
 		collider.handle_player_collision($GridDetection.target_position)
-		await get_tree().create_timer(0.15).timeout
+		await get_tree().create_timer(push_delay).timeout
 		is_frozen = false
 
 
