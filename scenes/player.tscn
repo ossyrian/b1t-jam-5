@@ -24,3 +24,6 @@ position = Vector2(16, 16)
 position = Vector2(16, 8)
 sprite_frames = ExtResource("3_dqkch")
 animation = &"idle"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1582038742]
+zoom = Vector2(2, 2)
