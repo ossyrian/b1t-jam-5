@@ -28,12 +28,12 @@ func _move():
 
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	# XXX: disabling while animated sprite isn't on remote
-	#if input_direction == Vector2.ZERO:
-	#sprite.play("idle")
-	#else:
-	#sprite.play("walk")
-	#if input_direction.x != 0:
-	#sprite.flip_h = input_direction.x < 0
+	if input_direction == Vector2.ZERO:
+		sprite.play("idle")
+	else:
+		sprite.play("walk")
+	if input_direction.x != 0:
+		sprite.flip_h = input_direction.x < 0
 
 	velocity = input_direction * speed
 
