@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://hp1fxvhkowu"]
 
 [ext_resource type="Script" uid="uid://d1lvtr4v3bgkq" path="res://scripts/pushable_object.gd" id="1_c2ln5"]
-[ext_resource type="Texture2D" uid="uid://ngm2qouh0tgh" path="res://assets/placeholder_box.png" id="2_bqn3j"]
+[ext_resource type="Texture2D" uid="uid://brjy7d8wt1fkm" path="res://assets/box_open.png" id="2_h04vn"]
 [ext_resource type="PackedScene" uid="uid://buf8ve5ir88se" path="res://scenes/grid_detection.tscn" id="2_telwu"]
 [ext_resource type="PackedScene" uid="uid://be0sau782p10q" path="res://scenes/grid_movement.tscn" id="4_brpd5"]
-[ext_resource type="AudioStream" uid="uid://012j6hxd00ce" path="res://assets/Hit_Impact_13_Retro_8_Bit_Chiptune.wav" id="5_brpd5"]
+[ext_resource type="AudioStream" uid="uid://dpdu0vxdfrxcg" path="res://assets/Hit_Impact_13_Retro_8_Bit_Chiptune.wav" id="5_brpd5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i1hh"]
 size = Vector2(32, 32)
 
-[node name="Box" type="AnimatableBody2D" unique_id=427020993]
+[node name="BoxOpen" type="AnimatableBody2D" unique_id=427020993]
 sync_to_physics = false
 script = ExtResource("1_c2ln5")
 move_time = null
@@ -19,7 +19,7 @@ position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_0i1hh")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=796822109]
-texture = ExtResource("2_bqn3j")
+texture = ExtResource("2_h04vn")
 centered = false
 
 [node name="GridDetection" parent="." unique_id=1771840494 instance=ExtResource("2_telwu")]
