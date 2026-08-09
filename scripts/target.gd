@@ -6,6 +6,7 @@ signal covered(target: Target)
 signal uncovered(target: Target)
 
 var occupant: PushableObject = null
+var stage := 0
 
 
 func _ready():
@@ -22,10 +23,12 @@ func is_covered() -> bool:
 func _on_body_entered(body: Node2D):
 	if occupant == null and body is PushableObject:
 		occupant = body
+		stage = 0
 		covered.emit(self)
 
 
 func _on_body_exited(body: Node2D):
 	if body == occupant:
 		occupant = null
+		stage = 0
 		uncovered.emit(self)

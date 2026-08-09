@@ -11,7 +11,6 @@
 
 [node name="Level" type="Node2D" unique_id=1976902473]
 script = ExtResource("1_ugcn1")
-step_time = 0.8
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1018923895]
 z_index = -10
@@ -31,7 +30,7 @@ position = Vector2(-127, 399)
 position = Vector2(-110, -36)
 
 [node name="BoxClosed" parent="." unique_id=1797421751 instance=ExtResource("5_qi5uv")]
-position = Vector2(443, -97)
+position = Vector2(438, -132)
 move_time = 0.15
 
 [node name="BoxClosed3" parent="." unique_id=269743717 instance=ExtResource("5_qi5uv")]
@@ -39,14 +38,14 @@ position = Vector2(-24, 441)
 move_time = 0.15
 
 [node name="BoxUpsideDown" parent="." unique_id=1764569641 instance=ExtResource("6_f6egh")]
-position = Vector2(605, -124)
+position = Vector2(239, -99)
 move_time = 0.15
 
 [node name="Target" parent="." unique_id=1111789987 instance=ExtResource("7_t4txi")]
 position = Vector2(-229, -83)
 
 [node name="Target6" parent="." unique_id=1506976820 instance=ExtResource("7_t4txi")]
-position = Vector2(366, -122)
+position = Vector2(296, -98)
 
 [node name="Target2" parent="." unique_id=298910446 instance=ExtResource("7_t4txi")]
 position = Vector2(430, 315)
@@ -59,3 +58,12 @@ position = Vector2(-290, 319)
 
 [node name="Bed" parent="." unique_id=1695562014 instance=ExtResource("8_apo5x")]
 position = Vector2(-292, 385)
+
+[node name="Target4" parent="." unique_id=610591006 instance=ExtResource("7_t4txi")]
+position = Vector2(377, -134)
+
+[node name="Target7" parent="." unique_id=835697493 instance=ExtResource("7_t4txi")]
+position = Vector2(494, -100)
+
+[node name="BoxOpen3" parent="." unique_id=1431099041 instance=ExtResource("4_n6eey")]
+position = Vector2(391, -96)

@@ -9,7 +9,7 @@
 
 [node name="Main" type="Node2D" unique_id=52356599]
 script = ExtResource("1_sugp2")
-levels = Array[PackedScene]([ExtResource("5_tefeu"), ExtResource("2_jyhfs"), ExtResource("3_tbgi4"), ExtResource("2_tbgi4")])
+levels = Array[PackedScene]([ExtResource("5_tefeu"), ExtResource("2_tbgi4"), ExtResource("2_jyhfs"), ExtResource("3_tbgi4")])
 
 [node name="LevelHolder" type="Node2D" parent="." unique_id=1530357411]
 

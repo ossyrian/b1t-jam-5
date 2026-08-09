@@ -22,6 +22,7 @@ var darken_patterns: Array[int]
 var step_time : float
 var bloom_step : float
 var zoom_time : float
+var dark_startup_time : float
 
 func _ready():
 	for target in targets:
@@ -30,26 +31,31 @@ func _ready():
 
 
 func _on_covered(target: Target):
-	for i in darken_patterns.size():
-		if not is_inside_tree():
+	if dark_startup_time > 0.0:
+		await get_tree().create_timer(dark_startup_time).timeout
+		if not is_inside_tree() or not target.is_covered():
 			return
-		if not target.is_covered():
-			return
-		_darken(target, darken_patterns[i])
+	while is_inside_tree() and target.is_covered():
+		_redraw()
+		if target.stage >= darken_patterns.size() - 1:
+			break
 		await get_tree().create_timer(step_time).timeout
+		if target.is_covered():
+			target.stage += 1
 
 	if targets.all(func(t): return t.is_covered()) and player.is_resting:
 		_on_level_complete()
 
 
 func _on_uncovered(_target: Target):
-	# rebuild the floor, then re-darken whoever is still covered.
+	_redraw()
+
+func _redraw():
 	_restore()
-	for target in targets:
-		if target.is_covered():
-			_darken(target, darken_patterns[-1])
-
-
+	for t in targets:
+		if t.is_covered():
+			_darken(t, darken_patterns[t.stage])
+			
 func _darken(target: Target, pattern_index: int):
 	var pattern := tilemap.tile_set.get_pattern(pattern_index)
 	var origin := _cell_of(target) - pattern.get_size() / 2
@@ -68,15 +74,16 @@ func _darken(target: Target, pattern_index: int):
 	_check_player()
 
 
+
 func is_dark(coords: Vector2i) -> bool:
-	return _saved_cells.has(coords)
+	return tilemap.get_cell_source_id(coords) == dark_src and tilemap.get_cell_atlas_coords(coords) == dark_atlas
 
 
 func _restore():
 	for coords in _saved_cells:
 		var cell = _saved_cells[coords]
 		tilemap.set_cell(coords, cell[0], cell[1], cell[2])
-	_saved_cells.clear()
+	# _saved_cells.clear()
 
 
 func _cell_of(target: Target) -> Vector2i:

@@ -1,10 +1,11 @@
 extends Node
 
 @export var levels: Array[PackedScene] = []
-@export var card_time := 3.0
+@export var card_time := 2.5
 
 @export var darken_patterns: Array[int] = [0, 1, 2, 3, 4, 5, 6]
 @export var darken_step_time := 0.5
+@export var dark_startup_time := 0.5
 @export var level_transition_bloom_step := 0.1
 @export var level_transition_zoom_time := 1.0
 
@@ -26,13 +27,17 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("restart"):
-		_change_level(_index, "", true)
+		_change_level(_index, "restarting", true)
+		# await get_tree().create_timer(0.3).timeout
+
+		
 
 func _set_level_parameters(level):
 	level.darken_patterns = darken_patterns
 	level.step_time = darken_step_time
 	level.bloom_step = level_transition_bloom_step
 	level.zoom_time = level_transition_zoom_time
+	level.dark_startup_time = dark_startup_time
 
 func _load_level(index: int):
 	_index = index
@@ -50,15 +55,20 @@ func _change_level(index: int, text: String, restarting := false):
 	if _busy:
 		return
 	_busy = true
+	var use_card
+	if restarting:
+		use_card = opening_card
+	else:
+		use_card = card
 	if text:
-		card.text = text
-		card.show()
+		use_card.text = text
+		use_card.show()
 	if _level and _level.has_method("play_exit_bloom"):
 		_level.play_exit_bloom(restarting)
 	await get_tree().create_timer(0.3).timeout
 	if text:
 		await get_tree().create_timer(card_time).timeout
-	card.hide()
+	use_card.hide()
 	_load_level(index)
 	_busy = false
 
