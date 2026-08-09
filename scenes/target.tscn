@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bbpriwxucr10x"]
+
+[ext_resource type="Script" uid="uid://b0qttrw7oq77" path="res://scripts/target.gd" id="1_2x57b"]
+[ext_resource type="Texture2D" uid="uid://b0csypcflavdm" path="res://assets/target.png" id="2_2x57b"]
+[ext_resource type="AudioStream" uid="uid://dpdu0vxdfrxcg" path="res://assets/Hit_Impact_13_Retro_8_Bit_Chiptune.wav" id="5_6q84j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i1hh"]
+size = Vector2(32, 32)
+
+[node name="Target" type="Area2D" unique_id=1506976820]
+z_index = -1
+collision_layer = 2
+script = ExtResource("1_2x57b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=861499583]
+z_index = -1
+position = Vector2(16, 16)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_0i1hh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=796822109]
+texture = ExtResource("2_2x57b")
+centered = false
+
+[node name="PushSound" type="AudioStreamPlayer" parent="." unique_id=197118260]
+stream = ExtResource("5_6q84j")
+pitch_scale = 0.5
+bus = &"SFX"

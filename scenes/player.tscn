@@ -21,6 +21,7 @@ shape = SubResource("RectangleShape2D_2xy6x")
 position = Vector2(16, 16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=38854318]
+z_index = 1
 position = Vector2(16, 8)
 sprite_frames = ExtResource("3_dqkch")
 animation = &"idle"

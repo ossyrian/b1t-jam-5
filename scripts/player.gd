@@ -9,6 +9,8 @@ extends CharacterBody2D
 
 var collision_direction = Vector2.ZERO
 
+func _ready():
+	global_position = global_position.snapped(Vector2(32,32))
 
 func _handle_collision(collision: KinematicCollision2D):
 	if not collision:
@@ -27,7 +29,6 @@ func _move():
 		return
 
 	var input_direction = Input.get_vector("left", "right", "up", "down")
-	# XXX: disabling while animated sprite isn't on remote
 	if input_direction == Vector2.ZERO:
 		sprite.play("idle")
 	else:

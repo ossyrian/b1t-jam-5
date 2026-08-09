@@ -1,3 +1,5 @@
+class_name PushableObject
+
 extends StaticBody2D
 
 @onready var grid_movement := $GridMovement
@@ -5,13 +7,17 @@ extends StaticBody2D
 
 @export var move_time := 0.15
 
+func _ready():
+	global_position = global_position.snapped(Vector2(32,32))
 
 func handle_player_collision(direction: Vector2):
 	grid_detection.point_at(direction)
 
 	if grid_detection.is_colliding():
-		return
+		var obj = grid_detection.get_collider()
+		if obj is PushableObject:
+			return
 
 	if grid_movement.try_move():
-		$PushSound.pitch_scale = randf_range(0.95, 1.05)
+		$PushSound.pitch_scale = randf_range(0.45, 0.55)
 		$PushSound.play()

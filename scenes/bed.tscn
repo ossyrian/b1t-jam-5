@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c6rymjcd4ce2q"]
+
+[ext_resource type="Script" uid="uid://d1lvtr4v3bgkq" path="res://scripts/pushable_object.gd" id="1_x7btf"]
+[ext_resource type="Texture2D" uid="uid://bt1v7plxugyqo" path="res://assets/bed_sideways_light.png" id="2_x7btf"]
+[ext_resource type="PackedScene" uid="uid://buf8ve5ir88se" path="res://scenes/grid_detection.tscn" id="3_pqek7"]
+[ext_resource type="PackedScene" uid="uid://be0sau782p10q" path="res://scenes/grid_movement.tscn" id="4_ulp3u"]
+[ext_resource type="AudioStream" uid="uid://dpdu0vxdfrxcg" path="res://assets/Hit_Impact_13_Retro_8_Bit_Chiptune.wav" id="5_honl5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i1hh"]
+size = Vector2(64, 32)
+
+[node name="Bed" type="AnimatableBody2D" unique_id=427020993]
+sync_to_physics = false
+script = ExtResource("1_x7btf")
+move_time = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=861499583]
+position = Vector2(32, 16)
+shape = SubResource("RectangleShape2D_0i1hh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=796822109]
+texture = ExtResource("2_x7btf")
+centered = false
+
+[node name="GridMovement" parent="." unique_id=1174022515 node_paths=PackedStringArray("body", "current_direction") instance=ExtResource("4_ulp3u")]
+body = NodePath("..")
+current_direction = NodePath("../GridDetection")
+
+[node name="GridDetection" parent="." unique_id=1771840494 instance=ExtResource("3_pqek7")]
+position = Vector2(16, 16)
+
+[node name="PushSound" type="AudioStreamPlayer" parent="." unique_id=197118260]
+stream = ExtResource("5_honl5")
+volume_db = 2.0
+bus = &"SFX"

@@ -11,14 +11,12 @@ config_version=5
 [application]
 
 config/name="b1t-jam-5"
-run/main_scene="res://scenes/test_floor.tscn"
+run/main_scene="res://scenes/level.tscn"
 config/features=PackedStringArray("4.7")
 config/icon="uid://cn3ni78yu4peo"
 
 [display]
 
-window/size/viewport_width=1200
-window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
