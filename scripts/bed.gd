@@ -4,7 +4,7 @@ extends Area2D
 signal rested(bed: Bed)
 signal woke(bed: Bed)
 
-@export var rest_time := 2.0
+@export var rest_time := 1.0
 
 var sleeper: Player = null
 
@@ -42,7 +42,6 @@ func is_occupied() -> bool:
 
 func _on_body_entered(body: Node2D):
 	if body is Player:
-		body.global_position = self.global_position
 		_candidate = body
 		_progress = 0.0
 
@@ -55,3 +54,11 @@ func _on_body_exited(body: Node2D):
 		sleeper.is_resting = false
 		sleeper = null
 		woke.emit(self)
+
+func remaining_rest_time(p: Player) -> float:
+	if sleeper == p:
+		return 0.0
+	if _candidate == p:
+		return maxf(rest_time - _progress, 0.0)
+	return -1
+	

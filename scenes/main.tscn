@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dxgutw200ksv0"]
+
+[ext_resource type="Script" uid="uid://rcp2v7bah2rt" path="res://scripts/main.gd" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://bamx8gv7ycx3l" path="res://scenes/levels/level_0.tscn" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://cdq5a071ed1u2" path="res://scenes/levels/level_2.tscn" id="2_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://orgyp48s1hio" path="res://scenes/levels/level_1.tscn" id="3_tbgi4"]
+[ext_resource type="AudioStream" uid="uid://bwpnu3ow15bfx" path="res://assets/time_for_adventure.mp3" id="4_jyhfs"]
+
+[node name="Main" type="Node2D" unique_id=52356599]
+script = ExtResource("1_sugp2")
+levels = Array[PackedScene]([ExtResource("2_jyhfs"), ExtResource("3_tbgi4"), ExtResource("2_tbgi4")])
+card_time = 3.0
+
+[node name="LevelHolder" type="Node2D" parent="." unique_id=1530357411]
+
+[node name="Transition" type="CanvasLayer" parent="." unique_id=591228734]
+
+[node name="Card" type="Label" parent="Transition" unique_id=1095321301]
+z_index = 4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.48235294, 0.43137255, 0.7490196, 1)
+theme_override_colors/font_shadow_color = Color(0.2509804, 0.20784314, 0.47058824, 1)
+theme_override_colors/font_outline_color = Color(0.2509804, 0.20784314, 0.47058824, 1)
+theme_override_font_sizes/font_size = 72
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Opening" type="CanvasLayer" parent="." unique_id=746697550]
+
+[node name="Card" type="Label" parent="Opening" unique_id=1262135656]
+z_index = 4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2509804, 0.20784314, 0.47058824, 1)
+theme_override_colors/font_shadow_color = Color(0.48235294, 0.43137255, 0.7490196, 1)
+theme_override_colors/font_outline_color = Color(0.48235294, 0.43137255, 0.7490196, 1)
+theme_override_font_sizes/font_size = 72
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=549756349]
+stream = ExtResource("4_jyhfs")
+pitch_scale = 0.5
+autoplay = true
