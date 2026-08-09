@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://buf8ve5ir88se" path="res://scenes/grid_detection.tscn" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xy6x"]
-size = Vector2(26.249996, 26.25)
+size = Vector2(26, 24)
 
 [node name="Player" type="CharacterBody2D" unique_id=200449314]
 collision_mask = 5
@@ -14,7 +14,8 @@ speed = 5
 push_delay = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1529984876]
-position = Vector2(17.499998, 10.500001)
+z_index = 1
+position = Vector2(17.499998, 10.5)
 scale = Vector2(0.8, 0.8)
 shape = SubResource("RectangleShape2D_2xy6x")
 
@@ -25,7 +26,7 @@ position = Vector2(16, 16)
 z_index = 1
 position = Vector2(16, 8)
 sprite_frames = ExtResource("3_dqkch")
-animation = &"rest"
+animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1582038742]
 zoom = Vector2(2, 2)

@@ -3,15 +3,12 @@ extends Node2D
 signal completed
 signal failed
 
-@export var darken_patterns: Array[int] = [0, 1, 2, 3, 4, 5, 6]
-@export var step_time := 1.0
-@export var bloom_step := 0.1
-@export var zoom_time := 1.0
 
 @onready var tilemap: TileMapLayer = $TileMapLayer
 @onready var targets := get_tree().get_nodes_in_group("targets")
 @onready var player: Player = $Player
 @onready var bed: Bed = $Bed
+
 
 var dark_src := 2
 var dark_atlas := Vector2i(2,1)
@@ -21,6 +18,10 @@ var light_atlas := Vector2i(2,0)
 var light_alt := 0
 var _saved_cells := {}
 var _finished := false
+var darken_patterns: Array[int]
+var step_time : float
+var bloom_step : float
+var zoom_time : float
 
 func _ready():
 	for target in targets:

@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://cdq5a071ed1u2" path="res://scenes/levels/level_2.tscn" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://orgyp48s1hio" path="res://scenes/levels/level_1.tscn" id="3_tbgi4"]
 [ext_resource type="AudioStream" uid="uid://bwpnu3ow15bfx" path="res://assets/time_for_adventure.mp3" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://c26ssc0aj8fml" path="res://scenes/levels/level_3.tscn" id="5_tefeu"]
 
 [node name="Main" type="Node2D" unique_id=52356599]
 script = ExtResource("1_sugp2")
-levels = Array[PackedScene]([ExtResource("2_jyhfs"), ExtResource("3_tbgi4"), ExtResource("2_tbgi4")])
-card_time = 3.0
+levels = Array[PackedScene]([ExtResource("5_tefeu"), ExtResource("2_jyhfs"), ExtResource("3_tbgi4"), ExtResource("2_tbgi4")])
 
 [node name="LevelHolder" type="Node2D" parent="." unique_id=1530357411]
 
