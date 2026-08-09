@@ -1,3 +1,5 @@
+class_name Player
+
 extends CharacterBody2D
 
 @export var speed = 400
@@ -8,6 +10,7 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var collision_direction = Vector2.ZERO
+var is_resting := false
 
 func _ready():
 	global_position = global_position.snapped(Vector2(32,32))
@@ -29,6 +32,13 @@ func _move():
 		return
 
 	var input_direction = Input.get_vector("left", "right", "up", "down")
+
+	if is_resting:
+		print("RESTING")
+		if input_direction == Vector2.ZERO:
+			return
+		is_resting = false          # any movement gets you out of bed
+
 	if input_direction == Vector2.ZERO:
 		sprite.play("idle")
 	else:

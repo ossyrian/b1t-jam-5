@@ -5,6 +5,7 @@ extends Node2D
 
 @onready var tilemap: TileMapLayer = $TileMapLayer
 @onready var targets := get_tree().get_nodes_in_group("targets")
+@onready var player: Player = $Player
 
 var _saved_cells := {}
 
@@ -56,6 +57,21 @@ func _darken(target: Target, pattern_index: int):
 			]
 
 	tilemap.set_pattern(origin, pattern)
+	_check_player()
+
+
+func is_dark(coords: Vector2i) -> bool:
+	return _saved_cells.has(coords)
+
+
+func _check_player():
+	var cell := tilemap.local_to_map(tilemap.to_local(player.global_position + Vector2(16, 16)))
+	if is_dark(cell) and not player.is_resting:
+		_on_player_caught()
+
+
+func _on_player_caught():
+	print("caught")
 
 
 func _restore():

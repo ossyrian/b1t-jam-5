@@ -241,7 +241,7 @@ autoplay = true
 position = Vector2(172, 142)
 
 [node name="BoxClosed" parent="." unique_id=1797421751 instance=ExtResource("7_wc255")]
-position = Vector2(273, 186)
+position = Vector2(342, 217)
 move_time = 0.15
 
 [node name="BoxUpsideDown" parent="." unique_id=1764569641 instance=ExtResource("8_arp2o")]
@@ -249,14 +249,13 @@ position = Vector2(319, 140)
 move_time = 0.15
 
 [node name="Target" parent="." unique_id=1111789987 instance=ExtResource("9_ux5qa")]
-position = Vector2(363, 141)
+position = Vector2(334, 109)
 
 [node name="Target2" parent="." unique_id=1506976820 instance=ExtResource("9_ux5qa")]
 position = Vector2(173, 111)
 
 [node name="Target3" parent="." unique_id=2033086068 instance=ExtResource("9_ux5qa")]
-position = Vector2(341, 225)
+position = Vector2(247, 268)
 
-[node name="Bed" parent="." unique_id=281823298 instance=ExtResource("10_olg7q")]
-position = Vector2(234, 257)
-move_time = 0.15
+[node name="Bed" parent="." unique_id=1695562014 instance=ExtResource("10_olg7q")]
+position = Vector2(239, 175)
