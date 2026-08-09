@@ -11,6 +11,7 @@ extends CharacterBody2D
 
 var collision_direction = Vector2.ZERO
 var is_resting := false
+var is_caught := false
 
 func _ready():
 	global_position = global_position.snapped(Vector2(32,32))
@@ -34,7 +35,7 @@ func _move():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 
 	if is_resting:
-		print("RESTING")
+		# print("RESTING")
 		if input_direction == Vector2.ZERO:
 			return
 		is_resting = false          # any movement gets you out of bed
@@ -55,4 +56,7 @@ func _move():
 
 
 func _physics_process(_delta):
-	_move()
+	if not is_caught:
+		_move()
+	else:
+		sprite.play("idle") # Replace with caught animation

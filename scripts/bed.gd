@@ -42,6 +42,7 @@ func is_occupied() -> bool:
 
 func _on_body_entered(body: Node2D):
 	if body is Player:
+		body.global_position = self.global_position
 		_candidate = body
 		_progress = 0.0
 

@@ -258,4 +258,4 @@ position = Vector2(173, 111)
 position = Vector2(247, 268)
 
 [node name="Bed" parent="." unique_id=1695562014 instance=ExtResource("10_olg7q")]
-position = Vector2(239, 175)
+position = Vector2(237, 202)

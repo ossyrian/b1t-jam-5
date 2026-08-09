@@ -29,7 +29,7 @@ func _on_covered(target: Target):
 		_darken(target, darken_patterns[i])
 		await get_tree().create_timer(step_time).timeout
 
-	if targets.all(func(t): return t.is_covered()):
+	if targets.all(func(t): return t.is_covered()) and player.is_resting:
 		_on_level_complete()
 
 
@@ -67,11 +67,8 @@ func is_dark(coords: Vector2i) -> bool:
 func _check_player():
 	var cell := tilemap.local_to_map(tilemap.to_local(player.global_position + Vector2(16, 16)))
 	if is_dark(cell) and not player.is_resting:
-		_on_player_caught()
-
-
-func _on_player_caught():
-	print("caught")
+		player.is_caught = true
+		print("Player got caught")
 
 
 func _restore():
