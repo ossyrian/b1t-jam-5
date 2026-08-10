@@ -89,5 +89,5 @@ func _on_completed():
 	_change_level(_index + 1, "A good night's rest at last.\nNight %d" % (_index + 2))
 
 
-func _on_failed():
-	_change_level(_index, "You shall not sleep well tonight.")
+func _on_failed(reason: String = ""):
+	_change_level(_index, reason if reason else "You shall not sleep well tonight.")
