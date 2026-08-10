@@ -132,7 +132,10 @@ func _check_player():
 			else:
 				_on_level_failed("Couldn't make it to bed...")
 		else:
-			_on_level_failed("Fell asleep in the dark...")
+			if player.is_resting:
+				_on_level_failed("Didn't turn off all the lights...")
+			else:
+				_on_level_failed("Fell asleep in the dark...")
 
 
 func _on_level_failed(reason: String = ""):

@@ -90,8 +90,10 @@ func _change_level(index: int, text: String, restarting := false):
 
 func _on_completed():
 	if _index + 1 >= levels.size():
-		card.text = "A good night's rest at last."
-		card.show()
+		$WinSound.play()
+		# card.text = "Sleep in tomorrow, you've earned it."
+		# card.show()
+		_change_level(0, "Sleep in tomorrow, you've earned it.")
 		return
 	$WinSound.play()
 	_change_level(_index + 1, "A good night's rest at last.\nNight %d" % (_index + 1))
