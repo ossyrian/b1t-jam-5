@@ -12,6 +12,8 @@
 [node name="Main" type="Node2D" unique_id=52356599]
 script = ExtResource("1_sugp2")
 levels = Array[PackedScene]([ExtResource("2_jyhfs"), ExtResource("3_tbgi4"), ExtResource("2_tbgi4"), ExtResource("5_tefeu")])
+win_pitch_scale = 0.2
+fail_pitch_scale = 0.3
 
 [node name="LevelHolder" type="Node2D" parent="." unique_id=1530357411]
 
@@ -62,7 +64,6 @@ stream = ExtResource("6_tefeu")
 volume_db = -7.0
 pitch_scale = 0.5
 autoplay = true
-mix_target = 1
 bus = &"BGM"
 parameters/looping = true
 
@@ -74,5 +75,5 @@ bus = &"SFX"
 
 [node name="WinSound" type="AudioStreamPlayer" parent="." unique_id=552370876]
 stream = ExtResource("8_tipki")
-pitch_scale = 0.3
+pitch_scale = 0.2
 bus = &"SFX"

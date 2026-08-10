@@ -15,9 +15,9 @@ extends Node
 @export var bgm_volume_db := -7.0
 @export var bgm_pitch_scale := 0.5
 @export var win_volume_db := 0.0
-@export var win_pitch_scale := 0.3
+@export var win_pitch_scale := 0.2
 @export var fail_volume_db := 0.5
-@export var fail_pitch_scale := 0.5
+@export var fail_pitch_scale := 0.3
 
 @onready var holder: Node2D = $LevelHolder
 @onready var card: Label = $Transition/Card
