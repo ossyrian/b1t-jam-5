@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8p42lf4103j6" path="res://assets/box_upside_down.png" id="2_lrbq3"]
 [ext_resource type="PackedScene" uid="uid://buf8ve5ir88se" path="res://scenes/grid_detection.tscn" id="3_raphb"]
 [ext_resource type="PackedScene" uid="uid://be0sau782p10q" path="res://scenes/grid_movement.tscn" id="4_j7yh0"]
-[ext_resource type="AudioStream" uid="uid://dpdu0vxdfrxcg" path="res://assets/Hit_Impact_13_Retro_8_Bit_Chiptune.wav" id="5_lfqr0"]
+[ext_resource type="AudioStream" uid="uid://d175qmwaufok8" path="res://assets/sounds/Quiz_And_Puzzle_Musical_SFX  (119).wav" id="5_lrbq3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i1hh"]
 size = Vector2(32, 32)
@@ -24,12 +24,13 @@ centered = false
 
 [node name="GridDetection" parent="." unique_id=1771840494 instance=ExtResource("3_raphb")]
 position = Vector2(16, 16)
+collide_with_areas = true
 
 [node name="GridMovement" parent="." unique_id=1174022515 node_paths=PackedStringArray("body", "current_direction") instance=ExtResource("4_j7yh0")]
 body = NodePath("..")
 current_direction = NodePath("../GridDetection")
 
 [node name="PushSound" type="AudioStreamPlayer" parent="." unique_id=197118260]
-stream = ExtResource("5_lfqr0")
+stream = ExtResource("5_lrbq3")
 volume_db = 2.0
 bus = &"SFX"

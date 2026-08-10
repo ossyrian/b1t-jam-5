@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dt5jm6ps0ddhm" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="SpriteFrames" uid="uid://b5umxp4dlbrqe" path="res://resources/player_animations.tres" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://buf8ve5ir88se" path="res://scenes/grid_detection.tscn" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://be0sau782p10q" path="res://scenes/grid_movement.tscn" id="4_dqkch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xy6x"]
 size = Vector2(26, 24)
@@ -11,6 +12,8 @@ size = Vector2(26, 24)
 collision_mask = 5
 script = ExtResource("1_g2els")
 speed = 5
+push_collision_radius = null
+is_frozen = null
 push_delay = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1529984876]
@@ -21,6 +24,7 @@ shape = SubResource("RectangleShape2D_2xy6x")
 
 [node name="GridDetection" parent="." unique_id=1771840494 instance=ExtResource("3_qhqgy")]
 position = Vector2(16, 16)
+collision_mask = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=38854318]
 z_index = 1
@@ -30,3 +34,7 @@ animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1582038742]
 zoom = Vector2(2, 2)
+
+[node name="GridMovement" parent="." unique_id=1174022515 node_paths=PackedStringArray("body", "current_direction") instance=ExtResource("4_dqkch")]
+body = NodePath("..")
+current_direction = NodePath("../GridDetection")

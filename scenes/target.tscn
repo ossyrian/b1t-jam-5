@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bbpriwxucr10x"]
 
 [ext_resource type="Script" uid="uid://b0qttrw7oq77" path="res://scripts/target.gd" id="1_2x57b"]
-[ext_resource type="Texture2D" uid="uid://b0csypcflavdm" path="res://assets/target.png" id="2_2x57b"]
-[ext_resource type="AudioStream" uid="uid://dpdu0vxdfrxcg" path="res://assets/Hit_Impact_13_Retro_8_Bit_Chiptune.wav" id="5_6q84j"]
+[ext_resource type="Texture2D" uid="uid://dd0v7pt1m14i7" path="res://assets/target.png" id="2_2x57b"]
+[ext_resource type="AudioStream" uid="uid://dx43b5o06t136" path="res://assets/sounds/Quiz_And_Puzzle_Musical_SFX  (127).wav" id="3_nlbrr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i1hh"]
 size = Vector2(32, 32)
@@ -22,7 +22,7 @@ shape = SubResource("RectangleShape2D_0i1hh")
 texture = ExtResource("2_2x57b")
 centered = false
 
-[node name="PushSound" type="AudioStreamPlayer" parent="." unique_id=197118260]
-stream = ExtResource("5_6q84j")
-pitch_scale = 0.5
+[node name="SwitchSound" type="AudioStreamPlayer" parent="." unique_id=197118260]
+stream = ExtResource("3_nlbrr")
+volume_db = 1.0
 bus = &"SFX"

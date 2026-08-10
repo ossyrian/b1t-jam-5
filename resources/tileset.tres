@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" format=3 uid="uid://o8nskiejdc7a"]
 
 [ext_resource type="Texture2D" uid="uid://dkhgrxwqai674" path="res://assets/gekkou_tiles.png" id="1_81yw3"]
-[ext_resource type="Texture2D" uid="uid://cdc1h1wrfpd5o" path="res://assets/carpet.png" id="2_vgpmu"]
+[ext_resource type="Texture2D" uid="uid://cnkp87hg4ebxf" path="res://assets/carpet.png" id="2_vgpmu"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_olg7q"]
 tile_data = PackedInt32Array(0, 131074, 1)

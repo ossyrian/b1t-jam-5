@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var push_delay = 0.2
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var grid_movement := $GridMovement
+@onready var grid_detection := $GridDetection
 
 var collision_direction = Vector2.ZERO
 var is_resting := false
@@ -29,10 +31,9 @@ func _handle_collision(collision: KinematicCollision2D):
 
 
 func _move():
-	if is_frozen:
-		return
-	if is_caught:
-		# play caught animation
+	if is_frozen or is_caught or grid_movement.moving:
+		# if is_caught:
+		# 	play caught animation
 		return
 
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -52,13 +53,32 @@ func _move():
 	if input_direction.x != 0:
 		sprite.flip_h = input_direction.x < 0
 
-	velocity = input_direction * speed
+	_try_step(input_direction)
 
-	$GridDetection.point_at(velocity)
+	# velocity = input_direction * speed
 
-	var collision = move_and_collide(velocity)
-	_handle_collision(collision)
+	# grid_detection.point_at(velocity)
 
+	# var collision = move_and_collide(velocity)
+	# _handle_collision(collision)
+
+
+func _try_step(direction: Vector2) -> void:
+	grid_detection.point_at(direction)
+
+	if grid_detection.is_colliding():
+		var collider = grid_detection.get_collider()
+		if not collider.has_method("handle_player_collision"): # not a pushable object
+			return
+		is_frozen = true
+		collider.handle_player_collision(grid_detection.target_position)
+		await get_tree().create_timer(push_delay).timeout
+		is_frozen = false
+		grid_detection.force_raycast_update()
+		if grid_detection.is_colliding():
+			return
+
+	grid_movement.try_move()
 
 func _physics_process(_delta):
 	if not is_caught:

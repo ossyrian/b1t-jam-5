@@ -1,11 +1,13 @@
 extends Node
 
 @export var levels: Array[PackedScene] = []
-@export var card_time := 5
+@export var card_time := 2.5
+@export var opening_card_time := 4
 
 @export var darken_patterns: Array[int] = [0, 1, 2, 3, 4, 5, 6]
 @export var darken_step_time := 0.5
 @export var dark_startup_time := 0.5
+@export var dark_escape_time := 2.0
 @export var level_transition_bloom_step := 0.1
 @export var level_transition_zoom_time := 1.0
 
@@ -20,16 +22,20 @@ var _busy := false
 
 func _ready():
 	_load_level(0)
-	opening_card.text = """Night 1
+	opening_card.text = """
+
+	Night 1
 
 	Turn on the dark and get to bed
 	for a good night's rest.
 
 	Move: WASD/Arrows
-	Restart: R"""
+	Restart: R
+
+	"""
 
 	opening_card.show()
-	await get_tree().create_timer(card_time).timeout
+	await get_tree().create_timer(opening_card_time).timeout
 	opening_card.hide()
 
 
@@ -45,6 +51,7 @@ func _set_level_parameters(level):
 	level.bloom_step = level_transition_bloom_step
 	level.zoom_time = level_transition_zoom_time
 	level.dark_startup_time = dark_startup_time
+	level.dark_escape_time = dark_escape_time
 
 
 func _load_level(index: int):
@@ -86,8 +93,10 @@ func _on_completed():
 		card.text = "A good night's rest at last."
 		card.show()
 		return
+	$WinSound.play()
 	_change_level(_index + 1, "A good night's rest at last.\nNight %d" % (_index + 2))
 
 
 func _on_failed(reason: String = ""):
+	$FailSound.play()
 	_change_level(_index, reason if reason else "You shall not sleep well tonight.")

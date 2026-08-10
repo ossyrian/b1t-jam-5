@@ -21,13 +21,29 @@ var step_time: float
 var bloom_step: float
 var zoom_time: float
 var dark_startup_time: float
-var dark_escape_time := 2.5
+var dark_escape_time : float
+var _dark_time := 0.0
 
 
 func _ready():
 	for target in targets:
 		target.covered.connect(_on_covered)
 		target.uncovered.connect(_on_uncovered)
+
+
+func _cell_under_player() -> Vector2i:
+	return tilemap.local_to_map(tilemap.to_local(player.global_position + Vector2(16, 16)))
+
+
+func _physics_process(delta):
+	if _finished:
+		return
+	if is_dark(_cell_under_player()):
+		_dark_time += delta
+		if _dark_time >= dark_escape_time:
+			_check_player()
+	else:
+		_dark_time = 0.0
 
 
 func _on_covered(target: Target):
@@ -77,8 +93,6 @@ func _darken(target: Target, pattern_index: int):
 			]
 
 	tilemap.set_pattern(origin, pattern)
-	await get_tree().create_timer(dark_escape_time).timeout
-	_check_player()
 
 
 func is_dark(coords: Vector2i) -> bool:
@@ -104,7 +118,7 @@ func _check_player():
 	if _finished:
 		return
 
-	var cell := tilemap.local_to_map(tilemap.to_local(player.global_position + Vector2(16, 16)))
+	var cell := _cell_under_player()
 	if is_dark(cell):
 		player.is_caught = true
 		if targets.all(

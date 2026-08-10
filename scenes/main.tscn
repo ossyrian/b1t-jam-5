@@ -4,8 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://bamx8gv7ycx3l" path="res://scenes/levels/level_0.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cdq5a071ed1u2" path="res://scenes/levels/level_2.tscn" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://orgyp48s1hio" path="res://scenes/levels/level_1.tscn" id="3_tbgi4"]
-[ext_resource type="AudioStream" uid="uid://bwpnu3ow15bfx" path="res://assets/time_for_adventure.mp3" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c26ssc0aj8fml" path="res://scenes/levels/level_3.tscn" id="5_tefeu"]
+[ext_resource type="AudioStream" uid="uid://butm0ppst8e7j" path="res://assets/sounds/time_for_adventure.mp3" id="6_tefeu"]
+[ext_resource type="AudioStream" uid="uid://dlhahp8s62i2m" path="res://assets/sounds/Quiz_And_Puzzle_Musical_SFX  (111).wav" id="7_tipki"]
+[ext_resource type="AudioStream" uid="uid://04ft30o44wbl" path="res://assets/sounds/Quiz_And_Puzzle_Musical_SFX  (238).wav" id="8_tipki"]
 
 [node name="Main" type="Node2D" unique_id=52356599]
 script = ExtResource("1_sugp2")
@@ -20,6 +22,10 @@ z_index = 4
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 79.0
+offset_top = 69.0
+offset_right = -97.0
+offset_bottom = -110.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.48235294, 0.43137255, 0.7490196, 1)
@@ -37,6 +43,10 @@ z_index = 4
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = 66.0
+offset_right = -93.0
+offset_bottom = -176.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.2509804, 0.20784314, 0.47058824, 1)
@@ -47,7 +57,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=549756349]
-stream = ExtResource("4_jyhfs")
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=549756349]
+stream = ExtResource("6_tefeu")
+volume_db = -7.0
 pitch_scale = 0.5
 autoplay = true
+mix_target = 1
+bus = &"BGM"
+parameters/looping = true
+
+[node name="FailSound" type="AudioStreamPlayer" parent="." unique_id=372082567]
+stream = ExtResource("7_tipki")
+volume_db = 0.5
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="WinSound" type="AudioStreamPlayer" parent="." unique_id=552370876]
+stream = ExtResource("8_tipki")
+pitch_scale = 0.3
+bus = &"SFX"

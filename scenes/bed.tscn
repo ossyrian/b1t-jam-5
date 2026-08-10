@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c6rymjcd4ce2q"]
 
 [ext_resource type="Script" uid="uid://cwexoosgc4xo" path="res://scripts/bed.gd" id="1_x7btf"]
-[ext_resource type="Texture2D" uid="uid://bykxqv6x3gfh4" path="res://assets/big_bed_sidways_dark.png" id="2_x7btf"]
-[ext_resource type="AudioStream" uid="uid://dpdu0vxdfrxcg" path="res://assets/Hit_Impact_13_Retro_8_Bit_Chiptune.wav" id="5_honl5"]
+[ext_resource type="Texture2D" uid="uid://dmlq5my54sy86" path="res://assets/big_bed_sidways_dark.png" id="2_x7btf"]
+[ext_resource type="AudioStream" path="res://assets/Hit_Impact_13_Retro_8_Bit_Chiptune.wav" id="5_honl5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i1hh"]
 size = Vector2(64, 64)
