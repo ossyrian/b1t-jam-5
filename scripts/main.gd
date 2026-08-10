@@ -11,20 +11,9 @@ extends Node
 @export var level_transition_bloom_step := 0.1
 @export var level_transition_zoom_time := 1.0
 
-@export_group("Audio")
-@export var bgm_volume_db := -7.0
-@export var bgm_pitch_scale := 0.5
-@export var win_volume_db := 0.0
-@export var win_pitch_scale := 0.2
-@export var fail_volume_db := 0.5
-@export var fail_pitch_scale := 0.3
-
 @onready var holder: Node2D = $LevelHolder
 @onready var card: Label = $Transition/Card
 @onready var opening_card: Label = $Opening/Card
-@onready var bgm: AudioStreamPlayer = $BGM
-@onready var win_sound: AudioStreamPlayer = $WinSound
-@onready var fail_sound: AudioStreamPlayer = $FailSound
 
 var _index := 0
 var _level: Node = null
@@ -32,7 +21,6 @@ var _busy := false
 
 
 func _ready():
-	_apply_audio_settings()
 	_load_level(0)
 	opening_card.text = """
 
@@ -49,15 +37,6 @@ func _ready():
 	opening_card.show()
 	await get_tree().create_timer(opening_card_time).timeout
 	opening_card.hide()
-
-
-func _apply_audio_settings():
-	bgm.volume_db = bgm_volume_db
-	bgm.pitch_scale = bgm_pitch_scale
-	win_sound.volume_db = win_volume_db
-	win_sound.pitch_scale = win_pitch_scale
-	fail_sound.volume_db = fail_volume_db
-	fail_sound.pitch_scale = fail_pitch_scale
 
 
 func _unhandled_input(event):
