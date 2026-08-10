@@ -9,7 +9,7 @@
 
 [node name="Main" type="Node2D" unique_id=52356599]
 script = ExtResource("1_sugp2")
-levels = Array[PackedScene]([ExtResource("5_tefeu"), ExtResource("2_tbgi4"), ExtResource("2_jyhfs"), ExtResource("3_tbgi4")])
+levels = Array[PackedScene]([ExtResource("2_jyhfs"), ExtResource("3_tbgi4"), ExtResource("2_tbgi4"), ExtResource("5_tefeu")])
 
 [node name="LevelHolder" type="Node2D" parent="." unique_id=1530357411]
 
@@ -42,7 +42,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.2509804, 0.20784314, 0.47058824, 1)
 theme_override_colors/font_shadow_color = Color(0.48235294, 0.43137255, 0.7490196, 1)
 theme_override_colors/font_outline_color = Color(0.48235294, 0.43137255, 0.7490196, 1)
-theme_override_font_sizes/font_size = 72
+theme_override_font_sizes/font_size = 36
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

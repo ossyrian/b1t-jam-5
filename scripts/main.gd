@@ -1,7 +1,7 @@
 extends Node
 
 @export var levels: Array[PackedScene] = []
-@export var card_time := 2.5
+@export var card_time := 5
 
 @export var darken_patterns: Array[int] = [0, 1, 2, 3, 4, 5, 6]
 @export var darken_step_time := 0.5
@@ -20,17 +20,24 @@ var _busy := false
 
 func _ready():
 	_load_level(0)
-	opening_card.text = "Turn on the dark and get to bed for a goodnight's rest. ([WASD,R])\n\nNight 1"
+	opening_card.text = """Night 1
+
+	Turn on the dark and get to bed
+	for a good night's rest.
+
+	Move: WASD/Arrows
+	Restart: R"""
+
 	opening_card.show()
 	await get_tree().create_timer(card_time).timeout
 	opening_card.hide()
+
 
 func _unhandled_input(event):
 	if event.is_action_pressed("restart"):
 		_change_level(_index, "restarting", true)
 		# await get_tree().create_timer(0.3).timeout
 
-		
 
 func _set_level_parameters(level):
 	level.darken_patterns = darken_patterns
@@ -38,6 +45,7 @@ func _set_level_parameters(level):
 	level.bloom_step = level_transition_bloom_step
 	level.zoom_time = level_transition_zoom_time
 	level.dark_startup_time = dark_startup_time
+
 
 func _load_level(index: int):
 	_index = index
