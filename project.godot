@@ -15,6 +15,10 @@ run/main_scene="uid://dxgutw200ksv0"
 config/features=PackedStringArray("4.7")
 config/icon="uid://cn3ni78yu4peo"
 
+[audio]
+
+buses/default_bus_layout="res://resources/default_bus_layout.tres"
+
 [display]
 
 window/stretch/mode="canvas_items"

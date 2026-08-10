@@ -40,6 +40,7 @@ func _move():
 
 	if is_resting:
 		sprite.play("rest")
+		$RestingSound.play()
 		sprite.rotation_degrees = 90.0
 		if input_direction == Vector2.ZERO:
 			return
@@ -48,19 +49,12 @@ func _move():
 		
 	if input_direction == Vector2.ZERO:
 		sprite.play("idle")
-	else:
-		sprite.play("walk")
+		return 
+	sprite.play("walk")
 	if input_direction.x != 0:
 		sprite.flip_h = input_direction.x < 0
 
 	_try_step(input_direction)
-
-	# velocity = input_direction * speed
-
-	# grid_detection.point_at(velocity)
-
-	# var collision = move_and_collide(velocity)
-	# _handle_collision(collision)
 
 
 func _try_step(direction: Vector2) -> void:

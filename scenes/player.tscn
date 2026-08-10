@@ -12,8 +12,6 @@ size = Vector2(26, 24)
 collision_mask = 5
 script = ExtResource("1_g2els")
 speed = 5
-push_collision_radius = null
-is_frozen = null
 push_delay = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1529984876]
@@ -38,3 +36,6 @@ zoom = Vector2(2, 2)
 [node name="GridMovement" parent="." unique_id=1174022515 node_paths=PackedStringArray("body", "current_direction") instance=ExtResource("4_dqkch")]
 body = NodePath("..")
 current_direction = NodePath("../GridDetection")
+
+[node name="RestingSound" type="AudioStreamPlayer" parent="." unique_id=116180459]
+bus = &"SFX"

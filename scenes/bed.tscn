@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cwexoosgc4xo" path="res://scripts/bed.gd" id="1_x7btf"]
 [ext_resource type="Texture2D" uid="uid://dmlq5my54sy86" path="res://assets/big_bed_sidways_dark.png" id="2_x7btf"]
-[ext_resource type="AudioStream" path="res://assets/Hit_Impact_13_Retro_8_Bit_Chiptune.wav" id="5_honl5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i1hh"]
 size = Vector2(64, 64)
@@ -18,8 +17,3 @@ centered = false
 position = Vector2(32, 32)
 scale = Vector2(0.8, 0.8)
 shape = SubResource("RectangleShape2D_0i1hh")
-
-[node name="PushSound" type="AudioStreamPlayer" parent="." unique_id=197118260]
-stream = ExtResource("5_honl5")
-volume_db = 2.0
-bus = &"SFX"
